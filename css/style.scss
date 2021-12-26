@@ -9,7 +9,7 @@
 }
 
 #all {
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
     color: #fff;
 }
@@ -25,6 +25,13 @@
     background: rgb(75, 56, 56);
 }
 
-#current_temp {
-    font-size: 45vw;
+.none {
+    display: none;
+}
+
+.current_temp {
+    font-size: 25vw;
+    &::after {
+        content: "";
+    }
 }

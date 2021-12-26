@@ -4,14 +4,14 @@
   "description": "Weather by Oleshko",
   "icons": [
     {
-      "src": "/img/icon-dia.png",
+      "src": "/img/icon-png-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "start_url": "/",
   "background_color": "#b0c6e7",
-  "theme_color": "#b0c6e7",
   "display": "standalone",
-  "scope": "/"
+  "scope": "/",
+  "theme_color": "#b0c6e7"
 }
