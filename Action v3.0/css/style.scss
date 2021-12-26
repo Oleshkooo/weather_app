@@ -1,0 +1,339 @@
+@import url(/css/fonts.css);
+
+/// ==================================================
+/// ==================================================
+/// ==================================================
+
+body {
+  background: #b0c6e7;
+  overflow: hidden;
+}
+/// ICONS
+.icon {
+  $icon: 45px;
+  width: $icon;
+  height: $icon;
+}
+/// qr
+.icon-qr {
+  $qr: 22.5px;
+  width: $qr;
+  height: $qr;
+}
+/// trident
+.icon-trident {
+  $trident: 26px;
+  width: $trident;
+  height: $trident;
+  position: absolute;
+  margin-top: 3px;
+  margin-left: 5px;
+}
+/// dots
+.icon-dots {
+  $dots: 33px;
+  width: $dots;
+  height: $dots;
+}
+/// bottom
+$bottom: 25px;
+.icon-documents {
+  $documents: $bottom;
+  width: $documents;
+  height: $documents;
+}
+.icon-services {
+  $services: $bottom;
+  width: $services;
+  height: $services;
+}
+.icon-messages {
+  $messages: $bottom;
+  width: $messages;
+  height: $messages;
+}
+.icon-menu {
+  $menu: $bottom;
+  width: $menu;
+  height: $menu;
+}
+
+//? ==================================================
+//? ==================================================
+//? ==================================================
+
+#top {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 2.5vh;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 88%;
+  }
+}
+
+#side-card {
+  position: fixed;
+  width: 100%;
+  height: 54.5vh;
+  margin-left: 97vw;
+  margin-top: 19vh;
+  border-radius: 10px;
+  background: #d6e2f2;
+}
+
+#card {
+  background-color: transparent;
+  width: 88%;
+  height: 62vh;
+  perspective: 1500px;
+  margin: 0 auto;
+  padding-top: 15.5vh;
+  .inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    /// FRONT
+    .front {
+      background-color: #d6e2f2;
+      .container {
+        width: 88%;
+        height: 100%;
+        margin: 0 auto;
+        .top {
+          margin-top: 3.1vh;
+          span {
+            font-size: 26px;
+          }
+        }
+        .middle {
+          display: flex;
+          margin-top: 2.5vh;
+          .left {
+            width: 50%;
+            img {
+              width: 19vh;
+              border: 2.4px solid #b0c6e7;
+            }
+          }
+          .right {
+            width: 50%;
+            font-size: 14px;
+            $right_pl: 2.5vh;
+            .date {
+              padding-left: $right_pl;
+            }
+            .number {
+              margin-top: 2.2vh;
+              padding-left: $right_pl;
+            }
+            .sign {
+              img {
+                width: 7.5vh;
+                margin-top: 5vh;
+                margin-left: 2.3vh;
+              }
+            }
+          }
+        }
+        #line {
+          width: 100%;
+          height: 2.4px;
+          margin-top: 2.5vh;
+          background: #b0c6e7;
+        }
+        .bottom {
+          margin-top: 3vh;
+          font-size: 24px;
+          display: flex;
+          .left {
+            width: 50%;
+          }
+          .right {
+            width: 50%;
+            .dots {
+              float: right;
+              margin-top: 7vh;
+            }
+          }
+        }
+      }
+    }
+    /// BACK
+    .back {
+      transform: rotateY(180deg);
+      background: #dde6f3;
+      .container {
+        width: 84%;
+        height: 100%;
+        margin: 0 auto;
+        /// QR
+        .if-qr {
+          .top {
+            padding-top: 5vh;
+            padding-left: 2vh;
+            span {
+              font-size: 12px;
+              color: #7f8c8d;
+            }
+          }
+          .middle {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            padding-top: 3vh;
+            padding-bottom: 4vh;
+            img {
+              width: 90%;
+              margin: 0 auto;
+            }
+          }
+        }
+        /// Bar
+        .if-bar {
+          .top {
+            padding-top: 17vh;
+            span {
+              font-size: 12px;
+              color: #7f8c8d;
+            }
+          }
+          .middle {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            padding-top: 3vh;
+            padding-bottom: 9vh;
+            img {
+              width: 100%;
+            }
+            span {
+              font-size: 15px;
+              margin-top: 1vh;
+            }
+          }
+        }
+        .bottom {
+          width: 85%;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-around;
+          .qr {
+            .container {
+              display: flex;
+              flex-direction: column;
+              width: 100px;
+              text-align: center;
+              span {
+                padding-top: 1vh;
+                font-size: 14px;
+              }
+            }
+          }
+          .bar {
+            .container {
+              display: flex;
+              flex-direction: column;
+              width: 100px;
+              text-align: center;
+              span {
+                padding-top: 1vh;
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.qr-bar-on {
+  filter: invert(1);
+  background: #fff;
+  margin: 0 auto;
+  width: 3vh;
+  padding: 1.3vh;
+  border-radius: 25%;
+}
+.qr-bar-off {
+  background: #b0c6e7;
+  margin: 0 auto;
+  width: 3vh;
+  padding: 1.3vh;
+  border-radius: 25%;
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 3%;
+  //box-shadow: x y blur size rgba(0, 0, 0, opacity);
+  box-shadow: 0px 35px 15px -20px rgba(0, 0, 0, 0.2);
+}
+
+.flip {
+  transform: rotateY(0deg);
+}
+
+#time {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 13.5px;
+  margin-top: 4.5vh;
+}
+
+#circles {
+  display: flex;
+  justify-content: center;
+  margin-top: 1vh;
+  .circle {
+    $circle: 8px;
+    width: $circle;
+    height: $circle;
+    background: #000;
+    border-radius: 100%;
+    opacity: 35%;
+    &:first-child {
+      opacity: 100%;
+    }
+    &:not(last-child) {
+      margin-right: 5px;
+    }
+  }
+}
+
+#bottom {
+  position: absolute;
+  width: 90%;
+  margin: 0 5%;
+  margin-top: 5.5vh;
+  display: flex;
+  justify-content: center;
+  font-size: 11.5px;
+  text-align: center;
+  .documents {
+    flex: 1;
+  }
+  .services {
+    flex: 1;
+  }
+  .messages {
+    flex: 1;
+  }
+  .menu {
+    flex: 1;
+  }
+}

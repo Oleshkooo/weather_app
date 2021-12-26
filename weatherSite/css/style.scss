@@ -1,0 +1,30 @@
+.r {
+    background: red;
+}
+.g {
+    background: green;
+}
+.b {
+    background: blue;
+}
+
+#all {
+    width: 100vw;
+    min-height: 100vh;
+    color: #fff;
+}
+
+.day {
+    // background: #74ebd5;
+    // background: linear-gradient(to right bottom, #ACB6E5, #74ebd5);
+    background: rgb(79, 93, 138);
+}
+.night {
+    // background: #0f0c29;
+    // background: linear-gradient(to right bottom, #24243e, #302b63, #0f0c29);
+    background: rgb(75, 56, 56);
+}
+
+#current_temp {
+    font-size: 45vw;
+}

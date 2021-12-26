@@ -1,0 +1,29 @@
+.r {
+  background: red;
+}
+
+.g {
+  background: green;
+}
+
+.b {
+  background: blue;
+}
+
+#all {
+  width: 100vw;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.day {
+  background: #4f5d8a;
+}
+
+.night {
+  background: #4b3838;
+}
+
+#current_temp {
+  font-size: 45vw;
+}
