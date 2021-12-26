@@ -1,7 +1,7 @@
 {
-  "short_name": "Дія",
-  "name": "Дія",
-  "description": "Дія",
+  "short_name": "Weather by Oleshko",
+  "name": "Weather by Oleshko",
+  "description": "Weather by Oleshko",
   "icons": [
     {
       "src": "/img/icon-dia.png",
@@ -11,7 +11,7 @@
   ],
   "start_url": "/",
   "background_color": "#b0c6e7",
+  "theme_color": "#b0c6e7",
   "display": "standalone",
-  "scope": "/",
-  "theme_color": "#b0c6e7"
+  "scope": "/"
 }
