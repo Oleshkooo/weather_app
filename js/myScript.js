@@ -27,21 +27,6 @@ const text = {
 // / start funcrions
 changeBg();
 
-function closePreloader() {
-    setTimeout(() => {
-        let i = 100;
-        let interval = setInterval(() => {
-            if (i>0) {
-                preloader.style.opacity = `${i}%`
-                i--
-            }
-            else {
-                clearInterval(interval)
-            }
-        }, 10);
-    }, 1500)
-}
-
 // === === === === ===
 
 // / get coords & location
@@ -53,7 +38,7 @@ if (navigator.geolocation) {
 function success(position) {
     latitude  = position.coords.latitude
     longitude = position.coords.longitude
-    console.log(latitude, longitude)
+    // console.log(latitude, longitude)
     getLocation()
 }
 // error
@@ -68,13 +53,29 @@ function getLocation() {
         .then(response => response.json())
         .then(data => {
             current.city = data.items[0].address.district
-            closePreloader();
             // current.city = data.items[0].address.city
             // console.log(current.city)
+            closePreloader();
         })
         .catch(err => {
             console.log("[ERROR] Wrong coordinates")
         })
+}
+
+// / close preloader
+function closePreloader() {
+    setTimeout(() => {
+        let i = 100;
+        let interval = setInterval(() => {
+            if (i>0) {
+                preloader.style.opacity = `${i}%`
+                i--
+            }
+            else {
+                clearInterval(interval)
+            }
+        }, 3);
+    }, 1500)
 }
 
 // === === === === ===
