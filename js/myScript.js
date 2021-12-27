@@ -24,7 +24,9 @@ const text = {
 
 // / start funcrions
 changeBg();
-updateHTML();
+setTimeout(() => {
+    getWeather();
+}, 10);
 
 
 // === === === === ===
