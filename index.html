@@ -61,7 +61,7 @@
         <script src="/js/myScript.js" defer></script>
         <!-- ! ==================== -->
     </head>
-    <body>
+    <body oncopy="return false;" onmousedown="return false;" oncontextmenu="return false;">
         <!-- ! DON`T TOUCH ========== -->
         <div id="installContainer" class="hidden"></div>
         <script src="/script.js" defer></script>
@@ -74,18 +74,21 @@
 
         <!-- CODE -->
 
+        <!-- <div id="loading" class="text-center align-items-center">
+            Accept the geolocation
+        </div> -->
+
         <div id="all">
             <div class="container">
 
                 <!-- / current -->
                 <div class="current text-center pt-4">
-                    <div class="current_city display-3 pb-4">Lviv</div>
+                    <div class="current_city display-3 pb-4"></div>
                     <div class="d-flex justify-content-center display-1 fw-normal pt-4">
-                        <div class=" inv-space display-2 invisible none">--</div>
-                        <div class="current_temp">-5</div>
+                        <div class="current_temp"></div>
                         <div class="mt-2">°</div>
                     </div>
-                    <div class="current_description display-6">Ясно</div>
+                    <div class="current_description display-6"></div>
                 </div>
 
                 <!-- / details -->
@@ -95,7 +98,7 @@
                         <div class="left d-flex">
                             <div class="current_icon">icon</div>
                             <div class="mx-2">Сьогодні</div>
-                            <div class="current_description">Ясно</div>
+                            <div class="current_description"></div>
                         </div>
                         <div class="right d-flex">
                             <div class="current_temp_max">-5</div>
@@ -117,16 +120,16 @@
                         </div>
                     </div>
                     <!-- Післязавтра -->
-                    <div class="afterTomorrow__details d-flex justify-content-between mt-2">
+                    <div class="afterTomorrow_details d-flex justify-content-between mt-2">
                         <div class="left d-flex">
                             <div class="afterTomorrow__icon">icon</div>
                             <div class="mx-2">Сьогодні</div>
-                            <div class="afterTomorrow__description">Ясно</div>
+                            <div class="afterTomorrow_description">Ясно</div>
                         </div>
                         <div class="right d-flex">
-                            <div class="afterTomorrow__temp_max">-5</div>
+                            <div class="afterTomorrow_temp_max">-5</div>
                             <div class="mx-2">/</div>
-                            <div class="afterTomorrow__temp_min">-10</div>
+                            <div class="afterTomorrow_temp_min">-10</div>
                         </div>
                     </div>
                 </div>

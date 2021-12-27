@@ -1,21 +1,42 @@
-var date = new Date();
-var time = date.getHours();
-console.log(time);
+// ! constants
+const API          = "97097b6bdad34048ed5f17c1097cb86a"
+var   latitude     = 49.8383
+var   longitude    = 24.0232
 
-// ! bg change
-var all = document.querySelector('#all')
-var timeClass = (time > 4 && time < 20) ? 'day' : 'night'
-all.classList.add(timeClass)
+var   currentCity  = 'Lviv'
+var   current_city = document.querySelector('.current_city')
 
-var temp = 5;
-var current_temp = document.querySelector('.current_temp')
-current_temp.innerHTML = temp
 
-// invisible space if temperature < 0
-var invSpace = document.querySelector('.inv-space')
-if (temp>=0) {
-    invSpace.classList.remove('none')
-}
-else {
-    invSpace.classList.add('none')
+// === current ===
+// weather
+var currentTemp
+var currentDescription
+var currentTempMax
+var currentTempMin
+// html
+var current_temp        = document.querySelector('.current_temp')
+var current_description = document.querySelector('.current_description')
+var current_temp_max    = document.querySelector('.current_temp_max')
+var current_temp_min    = document.querySelector('.current_temp_min')
+// default html changes
+
+
+// ! window onload
+document.addEventListener('load', event => {
+    // / coords
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            latitude = position.coords.latitude
+            longitude = position.coords.longitude
+            // console.log(latitude, longitude)
+            currentCity  = 'Lviv'
+            current_city.innerHTML = currentCity
+            console.log("onload")
+        })
+    }
+    main();
+})
+
+function main() {
+    console.log("asd")
 }
