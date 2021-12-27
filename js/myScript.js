@@ -1,11 +1,12 @@
 // ! constants
-const API       = "97097b6bdad34048ed5f17c1097cb86a"
-let   latitude  = 0;
-let   longitude = 0;
+const WEATHER_API = '97097b6bdad34048ed5f17c1097cb86a'
+const GEOCODE_API = 'Bu1x816b1miwfr1H9_DxIWQ7O30wbq8q6fzVJbewzTE'
+let   latitude    = 0;
+let   longitude   = 0;
 
 const current = {
-    city       : 'City',
-    description: 'Description',
+    city       : '',
+    description: '',
     temp       : 0,
     maxTemp    : 0,
     minTemp    : 0,
@@ -24,24 +25,34 @@ const text = {
 
 // / start funcrions
 changeBg();
-setTimeout(() => {
-    getWeather();
-}, 10);
-
 
 // === === === === ===
 
-// / coords
+// / get coords & location
+// get coords
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
         latitude  = position.coords.latitude
         longitude = position.coords.longitude
         // console.log(latitude, longitude)
+        getLocation()
     })
-    current.city = 'Lviv'
+}
+// get location
+function getLocation() {
+    fetch(`https://revgeocode.search.hereapi.com/v1/revgeocode?at=${latitude}%2C${longitude}&lang=en-US&apikey=${GEOCODE_API}`)
+        .then(response => response.json())
+        .then(data => {
+            current.city = data.items[0].address.city
+            // console.log(current.city)
+        })
+        .catch(err => {
+            console.log("[ERROR] Wrong coordinates")
+            current.city = 'Lviv'
+        })
 }
 
-
+// === === === === ===
 
 // / change background
 function changeBg() {
@@ -54,7 +65,7 @@ function changeBg() {
 
 // / get weather
 function getWeather() {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${current.city}&appid=${API}&units=metric`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${current.city}&appid=${WEATHER_API}&units=metric`)
         .then(response => response.json())
         .then(data => {
             // / weather
@@ -64,7 +75,9 @@ function getWeather() {
             current.minTemp     = Math.floor(data.main.temp_min)
             updateHTML();
         })
-        .catch(err => console.log("[ERROR] Wrong city name"))
+        .catch(err => {
+            console.log("[ERROR] Wrong city name")
+        })
 }
 
 // / update HTML

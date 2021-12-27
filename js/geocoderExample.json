@@ -1,0 +1,30 @@
+{
+    "items": [
+        {
+            "title": "Mykoly Kopernyka vulytsia, 35, Lviv, 79013, Ukraine",
+            "id": "here:af:streetsection:Pr6BnySFiC2BGdto2JYz7A:CgcIBCCU_uNbEAEaAjM1",
+            "resultType": "houseNumber",
+            "houseNumberType": "PA",
+            "address": {
+                "label": "Mykoly Kopernyka vulytsia, 35, Lviv, 79013, Ukraine",
+                "countryCode": "UKR",
+                "countryName": "Ukraine",
+                "county": "Lviv",
+                "city": "Lviv",
+                "district": "Lviv",
+                "street": "Mykoly Kopernyka vulytsia",
+                "postalCode": "79013",
+                "houseNumber": "35"
+            },
+            "position": { "lat": 49.83329, "lng": 24.01907 },
+            "access": [{ "lat": 49.83334, "lng": 24.01889 }],
+            "distance": 9,
+            "mapView": {
+                "west": 24.01839,
+                "south": 49.83226,
+                "east": 24.02425,
+                "north": 49.83706
+            }
+        }
+    ]
+}
