@@ -43,7 +43,8 @@ function getLocation() {
     fetch(`https://revgeocode.search.hereapi.com/v1/revgeocode?at=${latitude}%2C${longitude}&lang=en-US&apikey=${GEOCODE_API}`)
         .then(response => response.json())
         .then(data => {
-            current.city = data.items[0].address.city
+            current.city = data.items[0].address.district
+            // current.city = data.items[0].address.city
             // console.log(current.city)
         })
         .catch(err => {
