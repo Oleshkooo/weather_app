@@ -12,11 +12,12 @@ const current = {
 }
 
 const text = {
-    city       : document.querySelector('.current_city'),
-    description: document.querySelector('.current_description'),
-    temp       : document.querySelector('.current_temp'),
-    maxTemp    : document.querySelector('.current_temp_max'),
-    minTemp    : document.querySelector('.current_temp_min'),
+    city         : document.querySelector('.current_city'),
+    description_1: document.querySelector('.current_description_1'),
+    description_2: document.querySelector('.current_description_2'),
+    temp         : document.querySelector('.current_temp'),
+    maxTemp      : document.querySelector('.current_temp_max'),
+    minTemp      : document.querySelector('.current_temp_min'),
 }
 
 // === === === === ===
@@ -66,11 +67,12 @@ function getWeather() {
 
 // / update HTML
 function updateHTML() {
-    text.city.innerHTML        = current.city
-    text.description.innerHTML = current.description
-    text.temp.innerHTML        = current.temp
-    text.city.innerHTML        = current.city
-    text.city.innerHTML        = current.city
+    text.city.innerHTML          = current.city
+    text.description_1.innerHTML = current.description
+    text.description_2.innerHTML = current.description
+    text.temp.innerHTML          = current.temp
+    text.maxTemp.innerHTML       = current.maxTemp
+    text.minTemp.innerHTML       = current.minTemp
 }
 
 // / endless reload
