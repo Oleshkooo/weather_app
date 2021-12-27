@@ -51,7 +51,7 @@ function changeBg() {
 
 // / get weather
 function getWeather() {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${current.city}&appid=${API}&units=metric`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${current.city}&appid=${API}&units=metric`)
         .then(response => response.json())
         .then(data => {
             // / weather
