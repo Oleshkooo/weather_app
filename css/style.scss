@@ -12,10 +12,10 @@ body, html {
     cursor: default;
 }
 
-#loading {
+#preloader {
     width: 100%;
     height: 100vh;
-    display: none;
+    background: #fff;
 }
 
 #all {
@@ -34,7 +34,6 @@ body, html {
     // background: linear-gradient(to right bottom, #24243e, #302b63, #0f0c29);
     background: rgb(75, 56, 56);
 }
-
 .none {
     display: none;
 }

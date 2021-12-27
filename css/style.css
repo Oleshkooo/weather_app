@@ -14,10 +14,10 @@ body, html {
   cursor: default;
 }
 
-#loading {
+#preloader {
   width: 100%;
   height: 100vh;
-  display: none;
+  background: #fff;
 }
 
 #all {

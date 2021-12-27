@@ -3,6 +3,7 @@ const WEATHER_API = '97097b6bdad34048ed5f17c1097cb86a'
 const GEOCODE_API = 'Bu1x816b1miwfr1H9_DxIWQ7O30wbq8q6fzVJbewzTE'
 let   latitude    = 0;
 let   longitude   = 0;
+let   preloader   = document.querySelector('#preloader')
 
 const current = {
     city       : '',
@@ -26,17 +27,40 @@ const text = {
 // / start funcrions
 changeBg();
 
+function closePreloader() {
+    setTimeout(() => {
+        let i = 100;
+        let interval = setInterval(() => {
+            if (i>0) {
+                preloader.style.opacity = `${i}%`
+                i--
+            }
+            else {
+                clearInterval(interval)
+            }
+        }, 10);
+    }, 1500)
+}
+
 // === === === === ===
 
 // / get coords & location
 // get coords
 if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(position => {
-        latitude  = position.coords.latitude
-        longitude = position.coords.longitude
-        // console.log(latitude, longitude)
-        getLocation()
-    })
+    navigator.geolocation.getCurrentPosition(success, error)
+}
+// success
+function success(position) {
+    latitude  = position.coords.latitude
+    longitude = position.coords.longitude
+    console.log(latitude, longitude)
+    getLocation()
+}
+// error
+function error(err) {
+    let geolocationError = document.querySelector('.geolocation_error')
+    geolocationError.classList.remove('none')
+    console.log("[ERROR] Allow geolocation")
 }
 // get location
 function getLocation() {
@@ -44,12 +68,12 @@ function getLocation() {
         .then(response => response.json())
         .then(data => {
             current.city = data.items[0].address.district
+            closePreloader();
             // current.city = data.items[0].address.city
             // console.log(current.city)
         })
         .catch(err => {
             console.log("[ERROR] Wrong coordinates")
-            current.city = 'Lviv'
         })
 }
 
