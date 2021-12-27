@@ -1,0 +1,24 @@
+{
+    "items": [
+        {
+            "title": "Starozahorivska silska rada",
+            "id": "here:pds:place:804u9180-e2195e3909c04c9aadeb24d5948df3e6",
+            "resultType": "place",
+            "address": {
+                "label": "Starozahorivska silska rada, Lokachynskyi raion, 45534, Ukraine",
+                "countryCode": "UKR",
+                "countryName": "Ukraine",
+                "county": "Volynska oblast",
+                "city": "Lokachynskyi raion",
+                "district": "Staryi Zahoriv",
+                "postalCode": "45534"
+            },
+            "position": { "lat": 50.6654, "lng": 24.63659 },
+            "access": [{ "lat": 50.66542, "lng": 24.63658 }],
+            "distance": 113,
+            "categories": [
+                { "id": "800-8100-0163", "name": "City Hall", "primary": true }
+            ]
+        }
+    ]
+}
