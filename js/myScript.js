@@ -3,7 +3,6 @@ const WEATHER_API = '97097b6bdad34048ed5f17c1097cb86a'
 const GEOCODE_API = 'Bu1x816b1miwfr1H9_DxIWQ7O30wbq8q6fzVJbewzTE'
 let   latitude    = 0;
 let   longitude   = 0;
-let   preloader   = document.querySelector('#preloader')
 
 const current = {
     city       : '',
@@ -65,10 +64,15 @@ function getLocation() {
 // / close preloader
 function closePreloader() {
     setTimeout(() => {
-        let i = 100;
-        let interval = setInterval(() => {
+        let i             = 100;
+        let preloader     = document.querySelector('#preloader')
+        let preloaderImg  = document.querySelector('.preloader_img')
+        let preloaderText = document.querySelector('.preloader_text')
+        let interval      = setInterval(() => {
             if (i>0) {
-                preloader.style.opacity = `${i}%`
+                preloader.style.opacity     = `${i}%`
+                preloaderImg.style.opacity  = `${i}%`
+                preloaderText.style.opacity = `${i}%`
                 i--
             }
             else {
