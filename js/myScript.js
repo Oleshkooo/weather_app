@@ -149,8 +149,8 @@ function updateHTML() {
     text.maxTemp.innerHTML     = `${current.maxTemp}°`;
     text.minTemp.innerHTML     = `${current.minTemp}°`;
 
-    text.sunrise.innerHTML = `${sun.sunriseHour}:${sun.sunriseMin}`;
-    text.sunset.innerHTML  = `${sun.sunsetHour}:${sun.sunsetMin}`;
+    text.sunrise.innerHTML = `Sunrise ${sun.sunriseHour}:${sun.sunriseMin}`;
+    text.sunset.innerHTML  = `Sunset ${sun.sunsetHour}:${sun.sunsetMin}`;
 
     text.feelsLike.innerHTML = `${current.feelsLike}°`;
     text.humidity.innerHTML  = `${current.humidity}%`;
