@@ -47,6 +47,7 @@ const text = {
 // / start funcrions
 changeBg();
 getCoords();
+progressbar();
 
 // === === === === ===
 
@@ -140,6 +141,8 @@ function getWeather() {
         });
 }
 
+function progressbar() {}
+
 // / update HTML
 function updateHTML() {
     // current
@@ -180,4 +183,5 @@ function closePreloader() {
 setInterval(() => {
     changeBg();
     getWeather();
+    progressbar();
 }, 10000);
