@@ -1,0 +1,43 @@
+[
+    {
+        "name": "Lviv",
+        "local_names": {
+            "nl": "Lviv",
+            "be": "Львоў",
+            "ka": "ლვოვი",
+            "hr": "Lavov",
+            "hy": "Լվով",
+            "it": "Leopoli",
+            "sr": "Лавов",
+            "pl": "Lwów",
+            "eo": "Lvivo",
+            "es": "Leópolis",
+            "sl": "Lvov",
+            "cs": "Lvov",
+            "en": "Lviv",
+            "et": "Lviv",
+            "sk": "Ľvov",
+            "tr": "Lviv",
+            "lv": "Ļvova",
+            "he": "לבוב",
+            "de": "Lemberg",
+            "ru": "Львов",
+            "pt": "Leópolis",
+            "zh": "利維夫",
+            "ar": "لفيف",
+            "ko": "리비우",
+            "la": "Leopolis",
+            "ro": "Liov",
+            "uk": "Львів",
+            "ca": "Lviv",
+            "io": "Lviv",
+            "fr": "Lviv",
+            "hu": "Lviv",
+            "lt": "Lvovas"
+        },
+        "lat": 49.841952,
+        "lon": 24.0315921,
+        "country": "UA",
+        "state": "Lviv Oblast"
+    }
+]

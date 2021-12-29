@@ -1,11 +1,11 @@
 // ! constants
-const WEATHER_API = '97097b6bdad34048ed5f17c1097cb86a';
-const GEOCODE_API = 'Bu1x816b1miwfr1H9_DxIWQ7O30wbq8q6fzVJbewzTE';
-let   latitude    = 0;
-let   longitude   = 0;
+const API       = '97097b6bdad34048ed5f17c1097cb86a';
+let   latitude  = 0;
+let   longitude = 0;
 
 const current = {
     city       : '',
+    country    : '',
     description: '',
     temp       : 0,
     maxTemp    : 0,
@@ -13,12 +13,11 @@ const current = {
 };
 
 const textCurrent = {
-    city         : document.querySelector('.current_city'),
-    description_1: document.querySelector('.current_description_1'),
-    description_2: document.querySelector('.current_description_2'),
-    temp         : document.querySelector('.current_temp'),
-    maxTemp      : document.querySelector('.current_temp_max'),
-    minTemp      : document.querySelector('.current_temp_min'),
+    location   : document.querySelector('.current_location'),
+    description: document.querySelector('.current_description'),
+    temp       : document.querySelector('.current_temp'),
+    minTemp    : document.querySelector('.current_temp_min'),
+    maxTemp    : document.querySelector('.current_temp_max'),
 };
 
 // === === === === ===
@@ -48,8 +47,10 @@ function getCoords() {
 function success(position) {
     latitude  = position.coords.latitude;
     longitude = position.coords.longitude;
-    // console.log(latitude, longitude)
-    getLocation();
+    // console.log(latitude, longitude);
+    // getLocation();
+    getWeather();
+    closePreloader();
 }
 // error
 function error(err) {
@@ -60,31 +61,32 @@ function error(err) {
 }
 
 // / get location
-function getLocation() {
-    fetch(
-        `https://revgeocode.search.hereapi.com/v1/revgeocode?at=${latitude}%2C${longitude}&lang=en-US&apikey=${GEOCODE_API}`
-    )
-        .then((response) => response.json())
-        .then((data) => {
-            current.city = data.items[0].address.district;
-            // current.city = data.items[0].address.city
-            // console.log(current.city);
-            getWeather();
-            closePreloader();
-        })
-        .catch((err) => {
-            console.log('[ERROR] Wrong coordinates');
-        });
-}
+// function getLocation() {
+//     fetch(
+//         `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&appid=${API}`
+//     )
+//         .then((response) => response.json())
+//         .then((data) => {
+//             current.city = data[0].name;
+//             // console.log(current.city);
+//             getWeather();
+//             closePreloader();
+//         })
+//         .catch((err) => {
+//             console.log('[ERROR] Wrong coordinates');
+//         });
+// }
 
 // / get weather
 function getWeather() {
     fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${current.city}&appid=${WEATHER_API}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API}&units=metric`
     )
         .then((response) => response.json())
         .then((data) => {
             // / weather
+            current.city        = data.name;
+            current.country     = data.sys.country;
             current.description = data.weather[0].main;
             current.temp        = Math.round(data.main.temp);
             current.maxTemp     = Math.ceil(data.main.temp_max);
@@ -92,15 +94,15 @@ function getWeather() {
             updateHTML();
         })
         .catch((err) => {
-            console.log('[ERROR] Wrong city name');
+            console.log('[OWM ERROR] Something went wrong');
         });
 }
 
 // / update HTML
 function updateHTML() {
-    textCurrent.city.innerHTML          = current.city;
-    textCurrent.description_1.innerHTML = current.description;
-    textCurrent.description_2.innerHTML = current.description;
+    // current
+    textCurrent.location.innerHTML      = `${current.city}, ${current.country}`;
+    textCurrent.description.innerHTML = current.description;
     textCurrent.temp.innerHTML          = current.temp;
     textCurrent.maxTemp.innerHTML       = current.maxTemp;
     textCurrent.minTemp.innerHTML       = current.minTemp;
