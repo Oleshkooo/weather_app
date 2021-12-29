@@ -18,6 +18,8 @@ body, html {
   width: 100%;
   height: 100vh;
   background: #fff;
+  width: 0%;
+  height: 0vh;
 }
 
 #all {
@@ -45,6 +47,11 @@ body, html {
   border-radius: 10px;
 }
 
+.myContainer {
+  width: 94%;
+  margin-left: 3%;
+}
+
 .current_temp {
   font-size: 25vw;
 }
@@ -53,6 +60,6 @@ body, html {
 }
 
 .details {
-  padding-top: 25px;
-  padding-bottom: 18px;
+  padding-top: 27px;
+  padding-bottom: 20px;
 }

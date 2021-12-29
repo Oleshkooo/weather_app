@@ -16,6 +16,17 @@ const current = {
     perssure   : 0,
 };
 
+const sun = {
+    sunrise    : 0,
+    sunriseDate: 0,
+    sunriseHour: 0,
+    sunriseMin : 0,
+    sunset     : 0,
+    sunsetDate : 0,
+    sunsetHour : 0,
+    sunsetMin  : 0,
+};
+
 const text = {
     location   : document.querySelector('.current_location'),
     description: document.querySelector('.current_description'),
@@ -27,6 +38,8 @@ const text = {
     humidity   : document.querySelector('.current_humidity'),
     windSpeed  : document.querySelector('.current_wind_speed'),
     perssure   : document.querySelector('.current_perssure'),
+    sunrise    : document.querySelector('.current_sunrise'),
+    sunset     : document.querySelector('.current_sunset'),
 };
 
 // === === === === ===
@@ -100,10 +113,26 @@ function getWeather() {
             current.temp        = Math.round(data.main.temp);
             current.maxTemp     = Math.ceil(data.main.temp_max);
             current.minTemp     = Math.floor(data.main.temp_min);
-            current.feelsLike   = Math.round(data.main.feels_like);
-            current.humidity    = Math.round(data.main.humidity);
-            current.windSpeed   = Math.round(data.wind.speed);
-            current.perssure    = Math.round(data.main.pressure);
+
+            function format(n) {
+                return n < 10 ? '0' + n: n;
+            }
+
+            sun.sunrise     = data.sys.sunrise;
+            sun.sunriseDate = new Date(sun.sunrise * 1000);
+            sun.sunriseHour = format(sun.sunriseDate.getHours());
+            sun.sunriseMin  = format(sun.sunriseDate.getMinutes());
+
+            sun.sunset     = data.sys.sunset;
+            sun.sunsetDate = new Date(sun.sunset * 1000);
+            sun.sunsetHour = format(sun.sunsetDate.getHours());
+            sun.sunsetMin  = format(sun.sunsetDate.getMinutes());
+
+            current.feelsLike = Math.round(data.main.feels_like);
+            current.humidity  = Math.round(data.main.humidity);
+            current.windSpeed = Math.round(data.wind.speed);
+            current.perssure  = Math.round(data.main.pressure);
+
             updateHTML();
         })
         .catch((err) => {
@@ -119,10 +148,14 @@ function updateHTML() {
     text.temp.innerHTML        = current.temp;
     text.maxTemp.innerHTML     = `${current.maxTemp}°`;
     text.minTemp.innerHTML     = `${current.minTemp}°`;
-    text.feelsLike.innerHTML   = `${current.feelsLike}°`;
-    text.humidity.innerHTML    = `${current.humidity}%`;
-    text.windSpeed.innerHTML   = `${current.windSpeed} m/s`;
-    text.perssure.innerHTML    = `${current.perssure} mmHg`;
+
+    text.sunrise.innerHTML = `${sun.sunriseHour}:${sun.sunriseMin}`;
+    text.sunset.innerHTML  = `${sun.sunsetHour}:${sun.sunsetMin}`;
+
+    text.feelsLike.innerHTML = `${current.feelsLike}°`;
+    text.humidity.innerHTML  = `${current.humidity}%`;
+    text.windSpeed.innerHTML = `${current.windSpeed} m/s`;
+    text.perssure.innerHTML  = `${current.perssure} mmHg`;
 }
 
 // / close preloader

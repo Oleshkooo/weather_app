@@ -89,33 +89,36 @@
 
                 <!-- / current -->
                 <div class="current text-center pt-5">
+                    <!-- location -->
                     <div class="current_location display-3 pb-4">City</div>
                     <div class="d-flex justify-content-center display-1 fw-light pt-4">
+                        <!-- temperature -->
                         <div class="current_temp">0</div>
                         <div class="mt-2">°</div>
                     </div>
+                    <!-- description -->
                     <div class="current_description display-6">Description</div>
                 </div>
 
                 <!-- / details -->
-                <!-- <div class="current_details d-flex justify-content-between">
-                    <div class="left d-flex">
-                        <div class="current_icon">icon</div>
-                        <div class="mx-2 h5 fw-normal">Сьогодні</div>
-                        <div class="current_description_2 h5 fw-normal">Description</div>
-                    </div>
-                    <div class="right d-flex">
-                        <div class="current_temp_max h5 fw-normal">0</div>
-                        <div class="h5 fw-normal">°</div>
-                        <div class="mx-2 h5 fw-normal">/</div>
-                        <div class="current_temp_min h5 fw-normal">0</div>
-                        <div class="h5 fw-normal">°</div>
-                    </div>
-                <div class="details pt-5"> -->
-
                 <div class="details container glassmorphism mt-5">
-                    <!-- / min - max -->
-                    <div class="row">
+                    <div class="myContainer">
+
+                        <!-- sunrise - sunset -->
+                    <div class="progressbar">
+                        
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="left">
+                            <div class="current_sunrise mx-3">Sunrise 00:00</div>
+                        </div>
+                        <div class="right">
+                            <div class="current_sunset mx-3">Sunset 00:00</div>
+                        </div>
+                    </div>
+
+                    <!-- min - max -->
+                    <div class="row mt-5">
                         <div class="col-6">
                             <div class="h5 fw-light">Min</div>
                             <div class="current_temp_min h4 fw-normal">0°</div>
@@ -125,7 +128,8 @@
                             <div class="current_temp_max h4 fw-normal">0°</div>
                         </div>
                     </div>
-                    <!-- / feels like - humidity -->
+
+                    <!-- feels like - humidity -->
                     <div class="row mt-4">
                         <div class="col-6">
                             <div class="h5 fw-light">Feels like</div>
@@ -136,7 +140,8 @@
                             <div class="current_humidity h4 fw-normal">0%</div>
                         </div>
                     </div>
-                    <!-- / wind speed - pressure -->
+
+                    <!-- wind speed - pressure -->
                     <div class="row mt-4">
                         <div class="col-6">
                             <div class="h5 fw-light">Wind speed</div>
@@ -146,6 +151,8 @@
                             <div class="h5 fw-light">Pressure</div>
                             <div class="current_perssure h4 fw-normal">0 mmHg</div>
                         </div>
+                    </div>
+
                     </div>
                 </div>
 
