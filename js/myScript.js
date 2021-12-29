@@ -190,41 +190,44 @@ function closePreloader() {
 
 // / change background
 function changeBg() {
-    // var date      = new Date();
-    // var time      = date.getHours();
-    // var timeClass = time > 4 && time < 20 ? 'day' : 'night';
-    // all.classList.add(timeClass);
+    let date      = new Date();
+    let time      = date.getHours();
+    let dayTime = time > 4 && time < 20 ? true : false;
 
-    var all = document.querySelector('#all');
+    let all = document.querySelector('#all');
+    all.classList.remove('clear_day', 'clear_night', 'clouds_day', 'clouds_night', 'rain', 'thunderstorm', 'snow', 'atmosphere')
+
+    current.id = 800 // clear
+    // current.id = 801 // clouds
+    // current.id = 300 // rain
+    // current.id = 200 // thunderstorm
+    // current.id = 600 // snow
+    // current.id = 701 // atmosphere
 
     // clear
     if (current.id == 800) {
-        all.classList.remove('clear', 'clouds', 'rain', 'thunderstorm', 'snow', 'atmosphere')
-        all.classList.add('clear');
+        if (dayTime) all.classList.add('clear_day');
+        else all.classList.add('clear_night');
     }
     // clouds
     if (current.id >= 801 && current.id <= 804) {
-        all.classList.remove('clear', 'clouds', 'rain', 'thunderstorm', 'snow', 'atmosphere')
-        all.classList.add('clouds');
+        if (dayTime) all.classList.add('clouds_day');
+        else all.classList.add('clouds_night');
     }
     // rain
     if ((current.id >= 300 && current.id <= 321) || (current.id >= 500 && current.id <= 531)) {
-        all.classList.remove('clear', 'clouds', 'rain', 'thunderstorm', 'snow', 'atmosphere')
         all.classList.add('rain');
     }
     // thunderstorm
     if (current.id>=200 && current.id<=232) {
-        all.classList.remove('clear', 'clouds', 'rain', 'thunderstorm', 'snow', 'atmosphere')
         all.classList.add('thunderstorm');
     }
     // snow
     if (current.id>=600 && current.id<=622) {
-        all.classList.remove('clear', 'clouds', 'rain', 'thunderstorm', 'snow', 'atmosphere')
         all.classList.add('snow');
     }
     // atmosphere
     if (current.id>=701 && current.id<=781) {
-        all.classList.remove('clear', 'clouds', 'rain', 'thunderstorm', 'snow', 'atmosphere')
         all.classList.add('atmosphere');
     }
 }
