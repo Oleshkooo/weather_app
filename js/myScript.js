@@ -14,6 +14,7 @@ const current = {
     humidity   : 0,
     windSpeed  : 0,
     perssure   : 0,
+    id         : 0,
 };
 
 const sun = {
@@ -47,19 +48,9 @@ const text = {
 // === === === === ===
 
 // / start funcrions
-changeBg();
 getCoords();
 
 // === === === === ===
-
-// / change background
-function changeBg() {
-    var date      = new Date();
-    var time      = date.getHours();
-    var all       = document.querySelector('#all');
-    var timeClass = time > 4 && time < 20 ? 'day' : 'night';
-    all.classList.add(timeClass);
-}
 
 // / get coords
 function getCoords() {
@@ -115,6 +106,7 @@ function getWeather() {
             current.temp        = Math.round(data.main.temp);
             current.maxTemp     = Math.ceil(data.main.temp_max);
             current.minTemp     = Math.floor(data.main.temp_min);
+            current.id          = data.weather[0].id;
 
             sun.sunrise     = data.sys.sunrise;
             sun.sunriseDate = new Date(sun.sunrise * 1000);
@@ -135,6 +127,7 @@ function getWeather() {
 
             progressbar();
             updateHTML();
+            changeBg();
         })
         .catch((err) => {
             console.log('[OWM ERROR] Something went wrong');
@@ -142,18 +135,18 @@ function getWeather() {
 }
 
 function progressbar() {
-    let now     = new Date();
-    let hours   = now.getHours();
-    let minutes = now.getMinutes();
-    let time    = hours * 60 + minutes;
-    let percents = ((time - sun.sunriseTime) * 100) / (sun.sunsetTime - sun.sunriseTime);
-    let progressBar = document.querySelector('.progress-bar')
-    progressBar.style.width = `${percents}%`;
+    let now      = new Date();
+    let hours    = now.getHours();
+    let minutes  = now.getMinutes();
+    let time     = hours * 60 + minutes;
+    let percents = 
+        ((time - sun.sunriseTime) * 100) / (sun.sunsetTime - sun.sunriseTime);
+    let progressBar             = document.querySelector('.progress-bar');
+        progressBar.style.width = `${percents}%`;
 }
 
 // / update HTML
 function updateHTML() {
-    // current
     text.location.innerHTML    = `${current.city}, ${current.country}`;
     text.description.innerHTML = current.description;
     text.temp.innerHTML        = current.temp;
@@ -193,6 +186,47 @@ function closePreloader() {
             } else clearInterval(interval);
         }, 3);
     }, 1500);
+}
+
+// / change background
+function changeBg() {
+    // var date      = new Date();
+    // var time      = date.getHours();
+    // var timeClass = time > 4 && time < 20 ? 'day' : 'night';
+    // all.classList.add(timeClass);
+
+    var all = document.querySelector('#all');
+
+    // clear
+    if (current.id == 800) {
+        all.classList.remove('clear', 'clouds', 'rain', 'thunderstorm', 'snow', 'atmosphere')
+        all.classList.add('clear');
+    }
+    // clouds
+    if (current.id >= 801 && current.id <= 804) {
+        all.classList.remove('clear', 'clouds', 'rain', 'thunderstorm', 'snow', 'atmosphere')
+        all.classList.add('clouds');
+    }
+    // rain
+    if ((current.id >= 300 && current.id <= 321) || (current.id >= 500 && current.id <= 531)) {
+        all.classList.remove('clear', 'clouds', 'rain', 'thunderstorm', 'snow', 'atmosphere')
+        all.classList.add('rain');
+    }
+    // thunderstorm
+    if (current.id>=200 && current.id<=232) {
+        all.classList.remove('clear', 'clouds', 'rain', 'thunderstorm', 'snow', 'atmosphere')
+        all.classList.add('thunderstorm');
+    }
+    // snow
+    if (current.id>=600 && current.id<=622) {
+        all.classList.remove('clear', 'clouds', 'rain', 'thunderstorm', 'snow', 'atmosphere')
+        all.classList.add('snow');
+    }
+    // atmosphere
+    if (current.id>=701 && current.id<=781) {
+        all.classList.remove('clear', 'clouds', 'rain', 'thunderstorm', 'snow', 'atmosphere')
+        all.classList.add('atmosphere');
+    }
 }
 
 // / endless reload

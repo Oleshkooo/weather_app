@@ -26,6 +26,11 @@ body, html {
   color: #fff;
 }
 
+.bg {
+  background-size: cover;
+  background-position: center;
+}
+
 .day {
   background: #4f5d8a;
 }
@@ -34,14 +39,50 @@ body, html {
   background: #4b3838;
 }
 
+.clear {
+  background-image: url(https://www.aldergrovestar.com/wp-content/uploads/2020/03/20890720_web1_Langley-Weather-Sun-Clear-Sky-Skies.jpg);
+  background-blend-mode: multiply;
+  background-color: RGBA(46, 58, 68, 0.4);
+}
+
+.clouds {
+  background-image: url(https://naurok-test2.nyc3.digitaloceanspaces.com/uploads/test/88228/790515/591552_1614100950.jpg);
+  background-blend-mode: multiply;
+  background-color: RGBA(46, 58, 68, 0.65);
+}
+
+.rain {
+  background-image: url(https://content.api.news/v3/images/bin/e76612d66681acfed714c2b3342c0e7a);
+  background-blend-mode: multiply;
+  background-color: RGBA(46, 58, 68, 0.4);
+}
+
+.thunderstorm {
+  background-image: url(https://www.wkbn.com/wp-content/uploads/sites/48/2021/01/lightning-thunder-thunderstorm-rain-severe-weather-spring-summer-fall-weather-generic-7.jpg?strip=1);
+  background-blend-mode: multiply;
+  background-color: RGBA(46, 58, 68, 0.5);
+}
+
+.snow {
+  background-image: url(https://i.pinimg.com/736x/4b/56/e7/4b56e7544deda475ebe513ba0fd0cdfc--let-it-snow-the-snow.jpg);
+  background-blend-mode: multiply;
+  background-color: RGBA(46, 58, 68, 0.5);
+}
+
+.atmosphere {
+  background-image: url(https://images.unsplash.com/photo-1543968996-ee822b8176ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80);
+  background-blend-mode: multiply;
+  background-color: RGBA(46, 58, 68, 0.45);
+}
+
 .none {
   display: none;
 }
 
 .glassmorphism {
   background: rgba(255, 255, 255, 0.25);
-  -webkit-backdrop-filter: blur(4px);
-          backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
   border-radius: 10px;
 }
 
