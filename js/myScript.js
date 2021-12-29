@@ -10,14 +10,23 @@ const current = {
     temp       : 0,
     maxTemp    : 0,
     minTemp    : 0,
+    feelsLike  : 0,
+    humidity   : 0,
+    windSpeed  : 0,
+    perssure   : 0,
 };
 
-const textCurrent = {
+const text = {
     location   : document.querySelector('.current_location'),
     description: document.querySelector('.current_description'),
     temp       : document.querySelector('.current_temp'),
     minTemp    : document.querySelector('.current_temp_min'),
     maxTemp    : document.querySelector('.current_temp_max'),
+    maxTemp    : document.querySelector('.current_temp_max'),
+    feelsLike  : document.querySelector('.current_feels_like'),
+    humidity   : document.querySelector('.current_humidity'),
+    windSpeed  : document.querySelector('.current_wind_speed'),
+    perssure   : document.querySelector('.current_perssure'),
 };
 
 // === === === === ===
@@ -91,6 +100,10 @@ function getWeather() {
             current.temp        = Math.round(data.main.temp);
             current.maxTemp     = Math.ceil(data.main.temp_max);
             current.minTemp     = Math.floor(data.main.temp_min);
+            current.feelsLike   = Math.round(data.main.feels_like);
+            current.humidity    = Math.round(data.main.humidity);
+            current.windSpeed   = Math.round(data.wind.speed);
+            current.perssure    = Math.round(data.main.pressure);
             updateHTML();
         })
         .catch((err) => {
@@ -101,11 +114,15 @@ function getWeather() {
 // / update HTML
 function updateHTML() {
     // current
-    textCurrent.location.innerHTML      = `${current.city}, ${current.country}`;
-    textCurrent.description.innerHTML = current.description;
-    textCurrent.temp.innerHTML          = current.temp;
-    textCurrent.maxTemp.innerHTML       = current.maxTemp;
-    textCurrent.minTemp.innerHTML       = current.minTemp;
+    text.location.innerHTML    = `${current.city}, ${current.country}`;
+    text.description.innerHTML = current.description;
+    text.temp.innerHTML        = current.temp;
+    text.maxTemp.innerHTML     = `${current.maxTemp}°`;
+    text.minTemp.innerHTML     = `${current.minTemp}°`;
+    text.feelsLike.innerHTML   = `${current.feelsLike}°`;
+    text.humidity.innerHTML    = `${current.humidity}%`;
+    text.windSpeed.innerHTML   = `${current.windSpeed} m/s`;
+    text.perssure.innerHTML    = `${current.perssure} mmHg`;
 }
 
 // / close preloader
