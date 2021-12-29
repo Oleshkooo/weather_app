@@ -21,10 +21,12 @@ const sun = {
     sunriseDate: 0,
     sunriseHour: 0,
     sunriseMin : 0,
+    sunriseTime: 0,
     sunset     : 0,
     sunsetDate : 0,
     sunsetHour : 0,
     sunsetMin  : 0,
+    sunsetTime : 0,
 };
 
 const text = {
@@ -47,7 +49,6 @@ const text = {
 // / start funcrions
 changeBg();
 getCoords();
-progressbar();
 
 // === === === === ===
 
@@ -115,25 +116,24 @@ function getWeather() {
             current.maxTemp     = Math.ceil(data.main.temp_max);
             current.minTemp     = Math.floor(data.main.temp_min);
 
-            function format(n) {
-                return n < 10 ? '0' + n: n;
-            }
-
             sun.sunrise     = data.sys.sunrise;
             sun.sunriseDate = new Date(sun.sunrise * 1000);
-            sun.sunriseHour = format(sun.sunriseDate.getHours());
-            sun.sunriseMin  = format(sun.sunriseDate.getMinutes());
+            sun.sunriseHour = sun.sunriseDate.getHours();
+            sun.sunriseMin  = sun.sunriseDate.getMinutes();
+            sun.sunriseTime = sun.sunriseHour * 60 + sun.sunriseMin;
 
             sun.sunset     = data.sys.sunset;
             sun.sunsetDate = new Date(sun.sunset * 1000);
-            sun.sunsetHour = format(sun.sunsetDate.getHours());
-            sun.sunsetMin  = format(sun.sunsetDate.getMinutes());
+            sun.sunsetHour = sun.sunsetDate.getHours();
+            sun.sunsetMin  = sun.sunsetDate.getMinutes();
+            sun.sunsetTime = sun.sunsetHour * 60 + sun.sunsetMin;
 
             current.feelsLike = Math.round(data.main.feels_like);
             current.humidity  = Math.round(data.main.humidity);
             current.windSpeed = Math.round(data.wind.speed);
             current.perssure  = Math.round(data.main.pressure);
 
+            progressbar();
             updateHTML();
         })
         .catch((err) => {
@@ -141,7 +141,15 @@ function getWeather() {
         });
 }
 
-function progressbar() {}
+function progressbar() {
+    let now     = new Date();
+    let hours   = now.getHours();
+    let minutes = now.getMinutes();
+    let time    = hours * 60 + minutes;
+    let percents = ((time - sun.sunriseTime) * 100) / (sun.sunsetTime - sun.sunriseTime);
+    let progressBar = document.querySelector('.progress-bar')
+    progressBar.style.width = `${percents}%`;
+}
 
 // / update HTML
 function updateHTML() {
@@ -152,8 +160,16 @@ function updateHTML() {
     text.maxTemp.innerHTML     = `${current.maxTemp}°`;
     text.minTemp.innerHTML     = `${current.minTemp}°`;
 
-    text.sunrise.innerHTML = `Sunrise ${sun.sunriseHour}:${sun.sunriseMin}`;
-    text.sunset.innerHTML  = `Sunset ${sun.sunsetHour}:${sun.sunsetMin}`;
+    function addZero(n) {
+        return n < 10 ? '0' + n: n;
+    }
+
+    text.sunrise.innerHTML = `Sunrise ${addZero(sun.sunriseHour)}:${addZero(
+        sun.sunriseMin
+    )}`;
+    text.sunset.innerHTML = `Sunset ${addZero(sun.sunsetHour)}:${addZero(
+        sun.sunsetMin
+    )}`;
 
     text.feelsLike.innerHTML = `${current.feelsLike}°`;
     text.humidity.innerHTML  = `${current.humidity}%`;
@@ -184,4 +200,4 @@ setInterval(() => {
     changeBg();
     getWeather();
     progressbar();
-}, 10000);
+}, 15000);
