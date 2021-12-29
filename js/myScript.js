@@ -199,5 +199,4 @@ function closePreloader() {
 setInterval(() => {
     changeBg();
     getWeather();
-    progressbar();
 }, 15000);
