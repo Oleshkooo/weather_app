@@ -190,19 +190,31 @@ function closePreloader() {
 
 // / change background
 function changeBg() {
-    let date      = new Date();
-    let time      = date.getHours();
+    let date    = new Date();
+    let time    = date.getHours();
+        // time    = 2;
+        // time    = 15;
     let dayTime = time > 4 && time < 20 ? true : false;
 
     let all = document.querySelector('#all');
-    all.classList.remove('clear_day', 'clear_night', 'clouds_day', 'clouds_night', 'rain', 'thunderstorm', 'snow', 'atmosphere')
 
-    current.id = 800 // clear
-    // current.id = 801 // clouds
-    // current.id = 300 // rain
-    // current.id = 200 // thunderstorm
-    // current.id = 600 // snow
-    // current.id = 701 // atmosphere
+    all.classList.remove(
+        'clear_day',
+        'clear_night',
+        'clouds_day',
+        'clouds_night',
+        'rain',
+        'thunderstorm',
+        'snow',
+        'atmosphere'
+    );
+
+    // current.id = 800; // clear
+    // current.id = 801; // clouds
+    // current.id = 300; // rain
+    // current.id = 200; // thunderstorm
+    // current.id = 600; // snow
+    // current.id = 701; // atmosphere
 
     // clear
     if (current.id == 800) {
@@ -215,19 +227,22 @@ function changeBg() {
         else all.classList.add('clouds_night');
     }
     // rain
-    if ((current.id >= 300 && current.id <= 321) || (current.id >= 500 && current.id <= 531)) {
+    if (
+        (current.id >= 300 && current.id <= 321) ||
+        (current.id >= 500 && current.id <= 531)
+    ) {
         all.classList.add('rain');
     }
     // thunderstorm
-    if (current.id>=200 && current.id<=232) {
+    if (current.id >= 200 && current.id <= 232) {
         all.classList.add('thunderstorm');
     }
     // snow
-    if (current.id>=600 && current.id<=622) {
+    if (current.id >= 600 && current.id <= 622) {
         all.classList.add('snow');
     }
     // atmosphere
-    if (current.id>=701 && current.id<=781) {
+    if (current.id >= 701 && current.id <= 781) {
         all.classList.add('atmosphere');
     }
 }

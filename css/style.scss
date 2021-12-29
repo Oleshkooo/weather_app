@@ -17,8 +17,8 @@ body, html {
     height: 100vh;
     background: #fff;
     // todo - preloader visibility
-    width: 0%;
-    height: 0vh;
+    // width: 0%;
+    // height: 0vh;
 }
 
 #all {
@@ -32,19 +32,11 @@ body, html {
     background-size: cover;
     background-position: center;
 }
-.day {
-    // background: #74ebd5;
-    // background: linear-gradient(to right bottom, #ACB6E5, #74ebd5);
-    background: rgb(79, 93, 138);
-}
-.night {
-    // background: #0f0c29;
-    // background: linear-gradient(to right bottom, #24243e, #302b63, #0f0c29);
-    background: rgb(75, 56, 56);
-}
+// / clear day
 .clear_day {
     background: linear-gradient(to right bottom, #2d91c2 0%,#1e528e 100%)
 }
+// / clear night
 .clear_night {
     background: linear-gradient(to left top, #020111 60%,#20202c 100%);
 }
@@ -89,7 +81,7 @@ body, html {
 .glassmorphism {
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur( 12px );
-    border-radius: 10px;
+    border-radius: 12px;
     // border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .myContainer {

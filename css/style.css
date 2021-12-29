@@ -18,8 +18,6 @@ body, html {
   width: 100%;
   height: 100vh;
   background: #fff;
-  width: 0%;
-  height: 0vh;
 }
 
 #all {
@@ -31,14 +29,6 @@ body, html {
 .bg {
   background-size: cover;
   background-position: center;
-}
-
-.day {
-  background: #4f5d8a;
-}
-
-.night {
-  background: #4b3838;
 }
 
 .clear_day {
@@ -95,7 +85,7 @@ body, html {
   background: rgba(255, 255, 255, 0.25);
   -webkit-backdrop-filter: blur(12px);
           backdrop-filter: blur(12px);
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .myContainer {
